@@ -1,22 +1,34 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+
 from .models import Posts
 
 
-def game_view(request):
-    posts = Posts.objects.filter(category='Game')
-    return render(request, 'posts_view.html', context={'posts': posts})
+class GameView(ListView):
+    model = Posts
+    queryset = Posts.objects.filter(category='Game')
+    paginate_by = 4
+    template_name = 'posts_view.html'
+    context_object_name = 'posts'
 
 
-def soft_view(request):
-    posts = Posts.objects.filter(category='Soft')
-    return render(request, 'posts_view.html', context={'posts': posts})
+class SoftView(ListView):
+    model = Posts
+    queryset = Posts.objects.filter(category='Soft')
+    paginate_by = 4
+    template_name = 'posts_view.html'
+    context_object_name = 'posts'
 
 
-def plugin_view(request):
-    posts = Posts.objects.filter(category='Plugin')
-    return render(request, 'posts_view.html', context={'posts': posts})
+class PluginView(ListView):
+    model = Posts
+    queryset = Posts.objects.filter(category='Plugin')
+    paginate_by = 4
+    template_name = 'posts_view.html'
+    context_object_name = 'posts'
 
 
-def card_view(request, pk):
-    post = Posts.objects.get(pk=pk)
-    return render(request, 'post_view.html', context={'post': post})
+class PostView(DetailView):
+    model = Posts
+    context_object_name = 'post'
+    template_name = 'post_view.html'
