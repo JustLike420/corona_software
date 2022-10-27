@@ -1,5 +1,5 @@
 <nav>
-    <a href="{% url 'game-view' %}">Game</a>
-    <a href="{% url 'soft-view' %}">Soft</a>
-    <a href="{% url 'plugin-view' %}">Plugin</a>
+    <a {% if navbar == 'game' %} class="activate" {% endif %} href="{% url 'game-view' %}">Game</a>
+    <a {% if navbar == 'soft' %} class="activate" {% endif %} href="{% url 'soft-view' %}">Soft</a>
+    <a {% if navbar == 'plugin' %} class="activate" {% endif %} href="{% url 'plugin-view' %}">Plugin</a>
 </nav>

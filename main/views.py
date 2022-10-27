@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
 from .models import Posts
@@ -11,6 +10,11 @@ class GameView(ListView):
     template_name = 'posts_view.html'
     context_object_name = 'posts'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['navbar'] = 'game'
+        return context
+
 
 class SoftView(ListView):
     model = Posts
@@ -19,6 +23,11 @@ class SoftView(ListView):
     template_name = 'posts_view.html'
     context_object_name = 'posts'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['navbar'] = 'soft'
+        return context
+
 
 class PluginView(ListView):
     model = Posts
@@ -26,6 +35,11 @@ class PluginView(ListView):
     paginate_by = 4
     template_name = 'posts_view.html'
     context_object_name = 'posts'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['navbar'] = 'plugin'
+        return context
 
 
 class PostView(DetailView):

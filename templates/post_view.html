@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+<header>
+    {% include 'header.html' %}
+</header>
 <img src="{{ post.photo.url }}" style="width: 50px" alt="{{ post.title }}">
 {{ post.title }}
 {{ post.details|safe }}
