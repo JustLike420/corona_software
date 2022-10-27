@@ -7,8 +7,8 @@
 <body>
 <img src="{{ post.photo.url }}" style="width: 50px" alt="{{ post.title }}">
 {{ post.title }}
-{{ post.details }}
-{{ post.description }}
+{{ post.details|safe }}
+{{ post.description|safe }}
 <a href="">Download</a>
 {{ post.sub_title }}
 
