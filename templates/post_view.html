@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="{{ post.photo.url }}" style="width: 50px" alt="{{ post.title }}">
+{{ post.title }}
+{{ post.details }}
+{{ post.description }}
+<a href="">Download</a>
+{{ post.sub_title }}
+
+{% if post.category == 'Game' %}
+    <a href="{% url 'game-view' %}">All Game from Corona</a>
+{% elif post.category == 'Soft' %}
+    <a href="{% url 'soft-view' %}">All Soft from Corona</a>
+{% elif post.category == 'Plugin' %}
+    <a href="{% url 'plugin-view' %}">All Plugin from Corona</a>
+{% endif %}
+</body>
+</html>
