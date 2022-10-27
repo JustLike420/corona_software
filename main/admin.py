@@ -5,7 +5,11 @@ from ckeditor.widgets import CKEditorWidget
 
 
 class PostAdminForm(forms.ModelForm):
-    description = forms.CharField(label='Системные требования', widget=CKEditorWidget())
+    description = forms.CharField(label='Системные требования', widget=CKEditorWidget(), initial='<b>RAB: </b><br>'
+                                                                                                 '<b>CPU: </b>-<br>'
+                                                                                                 '<b>OS: </b>Windows 7 or newer<br>'
+                                                                                                 '<b>SOUND CARD: </b>DirectX Compatible<br>'
+                                                                                                 '<b>DEDICATED VIDEO RAM: </b>256 MB<br>')
     details = forms.CharField(label='Описание', widget=CKEditorWidget())
 
     class Meta:
@@ -18,5 +22,3 @@ class PostsAdmin(admin.ModelAdmin):
     list_display = ('title', 'category')
     list_filter = ('category',)
     form = PostAdminForm
-
-
