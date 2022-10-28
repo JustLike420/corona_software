@@ -12,7 +12,7 @@ class GameView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['navbar'] = 'game'
+        context['title'] = 'Game'
         return context
 
 
@@ -25,7 +25,7 @@ class SoftView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['navbar'] = 'soft'
+        context['title'] = 'Soft'
         return context
 
 
@@ -38,7 +38,7 @@ class PluginView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['navbar'] = 'plugin'
+        context['title'] = 'Plugin'
         return context
 
 
