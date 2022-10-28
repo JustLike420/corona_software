@@ -1,0 +1,20 @@
+{% load static %}
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__body">
+            <a href="{% url 'game-view' %}" class="footer__logo">
+                <picture><img src="{% static 'img/logo.png' %}" alt=""></picture>
+            </a>
+            <div class="footer__right">
+                <div class="footer__content">
+                    <p class="footer__text">You can help about crack</p>
+                    <p class="footer__text">and You can donate</p>
+                    <p class="footer__text">crack.support@coronasoft.com</p>
+                </div>
+                <div class="footer__img">
+                    <picture><img src="{% static 'img/qr.jpg' %}" alt=""></picture>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

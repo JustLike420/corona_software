@@ -1,5 +1,29 @@
-<nav>
-    <a {% if navbar == 'game' %} class="activate" {% endif %} href="{% url 'game-view' %}">Game</a>
-    <a {% if navbar == 'soft' %} class="activate" {% endif %} href="{% url 'soft-view' %}">Soft</a>
-    <a {% if navbar == 'plugin' %} class="activate" {% endif %} href="{% url 'plugin-view' %}">Plugin</a>
-</nav>
+{% load static %}
+<header class="header">
+    <div class="header__container">
+        <div class="header__body">
+            <a href="{% url 'game-view' %}" class="header__logo">
+                <picture>
+                    <img src="{% static 'img/logo.png' %}" alt="Corona"></picture>
+            </a>
+            <nav class="header__menu menu">
+                <ul class="menu__list">
+                    <li><a {% if navbar == 'game' %} class="menu__link menu__link_act"
+                                                     {% else %}class="menu__link" {% endif %}
+                                                     href="{% url 'game-view' %}">Game</a></li>
+                    <li><a {% if navbar == 'soft' %} class="menu__link menu__link_act"
+                                                     {% else %}class="menu__link" {% endif %}
+                                                     href="{% url 'soft-view' %}">Soft</a></li>
+                    <li><a {% if navbar == 'plugin' %} class="menu__link menu__link_act"
+                                                       {% else %}class="menu__link" {% endif %}
+                                                       href="{% url 'plugin-view' %}">Plugin</a></li>
+                </ul>
+            </nav>
+            <div class="header__light">
+            </div>
+            <div class="menu__burger">
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>

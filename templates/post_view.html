@@ -1,26 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<header>
-    {% include 'header.html' %}
-</header>
-<img src="{{ post.photo.url }}" style="width: 50px" alt="{{ post.title }}">
-{{ post.title }}
-{{ post.details|safe }}
-{{ post.description|safe }}
-<a href="">Download</a>
-{{ post.sub_title }}
+{% extends 'base.html' %}
+{% block content %}
+    <main class="page">
+        <div class="page__container">
+            <div class="page__body">
+                <div class="page__img">
+                    <picture>
 
-{% if post.category == 'Game' %}
-    <a href="{% url 'game-view' %}">All Game from Corona</a>
-{% elif post.category == 'Soft' %}
-    <a href="{% url 'soft-view' %}">All Soft from Corona</a>
-{% elif post.category == 'Plugin' %}
-    <a href="{% url 'plugin-view' %}">All Plugin from Corona</a>
-{% endif %}
-</body>
-</html>
+                        <img src="{{ post.photo.url }}" alt=""></picture>
+                </div>
+                <div class="page__right">
+                    <div class="page__content">
+                        <div class="page__title">{{ post.title }}</div>
+                        <div class="page__line"></div>
+                        <p class="page__text color-gray">{{ post.details }}</p>
+                        <div class="page__block">
+                            <div class="page__sub-title color-edit">System Requirements</div>
+                            <div class="page__line-2 color-edit"></div>
+                            <div class="page__item color-edit">{{ post.description|safe }}</div>
+                            <div class="page__name">{{ post.sub_title }}</div>
+                        </div>
+                        <a href="" class="page__download">DOWNLOAD</a>
+                    </div>
+                    {% if post.category == 'Game' %}
+                        <a href="{% url 'game-view' %}" class="page__all">All Game from Corona</a>
+                    {% elif post.category == 'Soft' %}
+                        <a href="{% url 'soft-view' %}" class="page__all">All Soft from Corona</a>
+                    {% elif post.category == 'Plugin' %}
+                        <a href="{% url 'plugin-view' %}" class="page__all">All Plugin from Corona</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

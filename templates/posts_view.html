@@ -1,46 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-        <style>
-        .activate {
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-<header>
-    {% include 'header.html' %}
-</header>
-{% for post in posts %}
-    {{ post.title }}
-    <img src="{{ post.photo.url }}" style="width: 50px" alt="{{ post.title }}">
-    <a href="{{ post.get_absolute_url }}">Read more</a>
-{% endfor %}
+{% extends 'base.html' %}
+{% block content %}
+    <main class="main">
+        <div class="main__container">
+            <div class="main__body">
+                {% for post in posts %}
 
-{% if page_obj.has_other_pages %}
-    <nav>
-        <ul>
-            {% if page_obj.has_previous %}
-                <li><a href="?page={{ page_obj.previous_page_number }}"></a>
-                </li>
+                    <div class="main__column">
+                        <div class="main__item">
+                            <div class="main__img">
+                                <picture>
+                                    <img src="{{ post.photo.url }}" alt=""></picture>
+                            </div>
+                            <div class="main__content">
+                                <h3 class="main__sub-title color-edit">{{ post.title }}</h3>
+                                <p class="main__text color-edit">{{ post.details|safe }}</p>
+                                <a href="{{ post.get_absolute_url }}" class="main__more color-edit">READ MORE</a>
+                                <a href="{{ post.file.url }}" class="main__download" download>DOWNLOAD</a>
+                                <div class="main__sub-text">{{ post.sub_title }}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if page_obj.has_other_pages %}
+                <div class="main__pages">
+                    {#                    {% if page_obj.has_previous %}#}
+                    {#                        <a href="?page={{ page_obj.previous_page_number }}" class="main__page"></a>#}
+                    {#                    {% endif %}#}
+                    {% for p in page_obj.paginator.page_range %}
+                        {% if page_obj.number == p %}
+                            <a href="?page={{ p }}" class="main__page main__page_act">{{ p }}</a>
+                        {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
+                            <a href="?page={{ p }}" class="main__page">{{ p }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {#                    {% if page_obj.has_next %}#}
+                    {#                        <a href="?page={{ page_obj.next_page_number }}" class="main__page"> </a>#}
+                    {#                    {% endif %}#}
+                </div>
             {% endif %}
-            {% for p in page_obj.paginator.page_range %}
-                {% if page_obj.number == p %}
-                    <li><a href="?page={{ p }}">{{ p }}</a></li>
-                {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
-                    <li><a href="?page={{ p }}">{{ p }}</a></li>
-                {% endif %}
-            {% endfor %}
 
-            {% if page_obj.has_next %}
-                <li><a href="?page={{ page_obj.next_page_number }}"> </a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
-{% endif %}
-
-</body>
-</html>
+        </div>
+    </main>
+{% endblock %}
