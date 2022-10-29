@@ -10,7 +10,6 @@ class PostAdminForm(forms.ModelForm):
                                                                                                  '<b>OS: </b>Windows 7 or newer<br>'
                                                                                                  '<b>SOUND CARD: </b>DirectX Compatible<br>'
                                                                                                  '<b>DEDICATED VIDEO RAM: </b>256 MB<br>')
-    details = forms.CharField(label='Описание', widget=CKEditorWidget())
 
     class Meta:
         model = Posts
