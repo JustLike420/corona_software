@@ -14,7 +14,7 @@
                             </div>
                             <div class="main__content">
                                 <h3 class="main__sub-title color-edit">{{ post.title }}</h3>
-                                <p class="main__text color-edit">{{ post.details|safe }}</p>
+                                <p class="main__text color-edit">{{ post.details|safe|truncatechars:335 }}</p>
                                 <a href="{{ post.get_absolute_url }}" class="main__more color-edit">READ MORE</a>
                                 <a href="{{ post.file.url }}" class="main__download" download>DOWNLOAD</a>
                                 <div class="main__sub-text">{{ post.sub_title }}</div>
