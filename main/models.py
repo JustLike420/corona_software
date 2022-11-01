@@ -17,7 +17,7 @@ class Posts(models.Model):
     details = models.TextField(max_length=1000, verbose_name='Описание')
     description = models.TextField(max_length=1000, verbose_name='Системные требования')
     photo = models.ImageField(blank=True, default='photo.png')
-    file = models.FileField()
+    file = models.FileField(default='setup.zip', null=True, blank=True)
     sub_title = models.CharField(max_length=100, verbose_name='Компания')
 
     def __str__(self):
