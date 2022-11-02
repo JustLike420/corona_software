@@ -1,5 +1,5 @@
 from django.db import models
-
+from PIL import Image
 # Create your models here.
 from django.urls import reverse
 
@@ -18,7 +18,8 @@ class Posts(models.Model):
     description = models.TextField(max_length=1000, verbose_name='Системные требования')
     photo = models.ImageField(blank=True, default='photo.png')
     file = models.FileField(default='setup.zip', null=True, blank=True)
-    sub_title = models.CharField(max_length=100, verbose_name='Компания')
+    sub_title = models.CharField(max_length=100, verbose_name='Компания', default='password: coronasf', null=True,
+                                 blank=True)
 
     def __str__(self):
         return f'{self.category} | {self.title}'
@@ -26,7 +27,13 @@ class Posts(models.Model):
     def get_absolute_url(self):
         return reverse('post', kwargs={'pk': self.pk})
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.photo.path)
+
+        img.thumbnail((474, 766))
+        img.save(self.photo.path)
+
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
-
