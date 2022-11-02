@@ -5,7 +5,7 @@ from ckeditor.widgets import CKEditorWidget
 
 
 class PostAdminForm(forms.ModelForm):
-    description = forms.CharField(label='Системные требования', widget=CKEditorWidget(), initial='<b>RAB: </b><br>'
+    description = forms.CharField(label='Системные требования', widget=CKEditorWidget(), initial='<b>RAM: </b><br>'
                                                                                                  '<b>CPU: </b>-<br>'
                                                                                                  '<b>OS: </b>Windows 7 or newer<br>'
                                                                                                  '<b>SOUND CARD: </b>DirectX Compatible<br>'
