@@ -20,6 +20,7 @@ class Posts(models.Model):
     file = models.FileField(default='setup.zip', null=True, blank=True)
     sub_title = models.CharField(max_length=100, verbose_name='Компания', default='password: coronasf', null=True,
                                  blank=True)
+    views = models.IntegerField(default=0, verbose_name='Кол-во просмотров')
 
     def __str__(self):
         return f'{self.category} | {self.title}'
