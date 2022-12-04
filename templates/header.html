@@ -14,9 +14,17 @@
                     <li><a {% if title == 'Soft' %} class="menu__link menu__link_act"
                                                      {% else %}class="menu__link" {% endif %}
                                                      href="{% url 'soft-view' %}">Soft</a></li>
-                    <li><a {% if title == 'Plugin' %} class="menu__link menu__link_act"
-                                                       {% else %}class="menu__link" {% endif %}
-                                                       href="{% url 'plugin-view' %}">Plugin</a></li>
+                <li class="menu__link">
+                    <form action="{% url 'game-view' %}" method="get" class="search-form">
+                        <div class="">
+                            <input type="search" name="s" placeholder="Search">
+                            <button type="submit" class=""></button>
+                        </div>
+                    </form>
+                    </li>
+{#                    <li><a {% if title == 'Plugin' %} class="menu__link menu__link_act"#}
+{#                                                       {% else %}class="menu__link" {% endif %}#}
+{#                                                       href="{% url 'plugin-view' %}">Plugin</a></li>#}
                 </ul>
             </nav>
             <div class="header__light">

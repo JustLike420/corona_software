@@ -6,7 +6,6 @@ from .models import Posts
 
 class GameView(ListView):
     model = Posts
-    queryset = Posts.objects.filter(category='Game')
     paginate_by = 4
     template_name = 'posts_view.html'
     context_object_name = 'posts'
@@ -15,6 +14,12 @@ class GameView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Game'
         return context
+
+    def get_queryset(self, *args, **kwargs):
+        if self.request.GET.get('s'):
+            return Posts.objects.filter(title__icontains=self.request.GET.get('s'))
+        else:
+            return Posts.objects.filter(category='Game')
 
 
 class SoftView(ListView):
