@@ -25,21 +25,22 @@
             </div>
             {% if page_obj.has_other_pages %}
                 <div class="main__pages">
-                                        {% if page_obj.has_previous %}
-                                            <a href="?page={{ page_obj.previous_page_number }}" class="main__page">&laquo;</a>
-                                        {% endif %}
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1" class="main__page">1</a>
+                        <a href="?page={{ page_obj.previous_page_number }}" class="main__page">&laquo;</a>
+                    {% endif %}
                     {% for p in page_obj.paginator.page_range %}
                         {% if page_obj.number == p %}
                             <a href="?page={{ p }}" class="main__page main__page_act">{{ p }}</a>
-                        {% elif p > page_obj.number|add:-10 and p < page_obj.number|add:10 %}
+                        {% elif p > page_obj.number|add:-5 and p < page_obj.number|add:5 %}
                             <a href="?page={{ p }}" class="main__page">{{ p }}</a>
                         {% endif %}
                     {% endfor %}
 
-                                        {% if page_obj.has_next %}
-                                            <a href="?page={{ page_obj.next_page_number }}" class="main__page">&raquo; </a>
-                                            <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
-                                        {% endif %}
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" class="main__page">&raquo; </a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}" class="main__page">{{ page_obj.paginator.num_pages }}</a>
+                    {% endif %}
 
                 </div>
             {% endif %}
