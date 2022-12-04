@@ -20,7 +20,7 @@
                             <div class="page__item color-edit">{{ post.description|safe }}</div>
                             <div class="page__name">{{ post.sub_title }}</div>
                         </div>
-                        <a href="{{ post.file.url }}" class="page__download">DOWNLOAD</a>
+                        <a href="{{ post.file.url }}" class="page__download" download>DOWNLOAD</a>
                     </div>
                     {% if post.category == 'Game' %}
                         <a href="{% url 'game-view' %}" class="page__all">All Game from Corona</a>
