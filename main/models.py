@@ -21,6 +21,7 @@ class Posts(models.Model):
     sub_title = models.CharField(max_length=100, verbose_name='Компания', default='password: coronasf', null=True,
                                  blank=True)
     views = models.IntegerField(default=0, verbose_name='Кол-во просмотров')
+    downloads = models.IntegerField(default=0, verbose_name='Кол-во скачиваний')
 
     def __str__(self):
         return f'{self.category} | {self.title}'
@@ -34,6 +35,9 @@ class Posts(models.Model):
 
         img.thumbnail((474, 766))
         img.save(self.photo.path)
+
+    def increment_download_count(self):
+        self.downloads += 1
 
     class Meta:
         verbose_name = 'Пост'

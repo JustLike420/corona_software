@@ -1,4 +1,5 @@
 from django.db.models import F
+from django.http import JsonResponse
 from django.views.generic import ListView, DetailView
 
 from .models import Posts
@@ -59,3 +60,10 @@ class PostView(DetailView):
         self.object.save()
         self.object.refresh_from_db()
         return context
+
+
+def download_add(request, pk):
+    post = Posts.objects.get(pk=pk)
+    post.increment_download_count()
+    post.save()
+    return JsonResponse({'status': f'download added to {post.title} post'})

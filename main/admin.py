@@ -18,6 +18,6 @@ class PostAdminForm(forms.ModelForm):
 
 @admin.register(Posts)
 class PostsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'views')
-    list_filter = ('category', 'views')
+    list_display = ('title', 'category', 'views', 'downloads')
+    list_filter = ('category', 'views', 'downloads')
     form = PostAdminForm

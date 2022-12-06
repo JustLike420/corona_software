@@ -5,7 +5,6 @@
         <div class="main__container">
             <div class="main__body">
                 {% for post in posts %}
-
                     <div class="main__column">
                         <div class="main__item">
                             <div class="main__img">
@@ -16,7 +15,7 @@
                                 <h3 class="main__sub-title color-edit">{{ post.title }}</h3>
                                 <p class="main__text color-edit">{{ post.details|safe|truncatechars:328 }}</p>
                                 <a href="{{ post.get_absolute_url }}" class="main__more color-edit">READ MORE</a>
-                                <a href="{{ post.file.url }}" class="main__download" download>DOWNLOAD</a>
+                                <a href="" onclick="ajaxSend({{ post.id }})" class="main__download">DOWNLOAD</a>
                                 <div class="main__sub-text">{{ post.sub_title }}</div>
                             </div>
                         </div>
@@ -39,7 +38,8 @@
 
                     {% if page_obj.has_next %}
                         <a href="?page={{ page_obj.next_page_number }}" class="main__page">&raquo; </a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}" class="main__page">{{ page_obj.paginator.num_pages }}</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}"
+                           class="main__page">{{ page_obj.paginator.num_pages }}</a>
                     {% endif %}
 
                 </div>
@@ -47,4 +47,14 @@
 
         </div>
     </main>
+    <script>
+        function ajaxSend(post_id) {
+            fetch(`/post/${post_id}/download_add`, {
+                method: "GET",
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                }
+            })
+        }
+    </script>
 {% endblock %}
