@@ -11,7 +11,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
     <title>{% block title %}{% endblock %}</title>
-
+    <style>
+        .search_input::placeholder {
+            color: #d0d0d0;
+        }
+    </style>
 </head>
 <body>
 <div class="wrapper">
